@@ -4,13 +4,13 @@ describe('Clients tests', () => {
         require('cypress-xpath');
 
         // Default login
-        cy.visit('https://inv.bg')
-        cy.xpath('//*[@id="inheader"]/a[2]').click()
+        cy.visit('https://inv.bg');
+        cy.xpath('//*[@id="inheader"]/a[2]').click();
         cy.get('#login-subdomain').type('Kikotest');
         cy.xpath('//*[@id="gologin"]').click();
         cy.get("#loginusername").type('kikotestsecure@gmail.com');
         cy.get('#loginpassword').type('Kiko123@');
-        cy.get('[data-callback="submitLoginForm"]').click()
+        cy.get('[data-callback="submitLoginForm"]').click();
         cy.get('.newFeatureOKbutton').click();
         cy.xpath('//*[@id="logo"]/a/h1').should('have.text',"kikotest");
         cy.xpath("//*[@id='userpanel']/div").should("have.text",'kikotestsecure@gmail.com');
@@ -28,21 +28,21 @@ describe('Clients tests', () => {
         //Assertion for added message
         cy.get('#okmsg').should($el => expect($el.text().trim()).to.equal('Клиентът е добавен успешно.'));
         cy.get(':nth-child(1) > td > .client-section-title').should('have.text','Информация за клиента');
-        cy.get(':nth-child(2) > .vertical-align-top > b').should('have.text','Име:')
+        cy.get(':nth-child(2) > .vertical-align-top > b').should('have.text','Име:');
         cy.get('tbody > :nth-child(2) > :nth-child(2)').should('have.text','OneClient4');
 
-    })
+    });
 
     it("2.[P] Add new ITEM -> dashboard", () => {
             require('cypress-xpath');
         // Default login
-        cy.visit('https://inv.bg')
-        cy.xpath('//*[@id="inheader"]/a[2]').click()
+        cy.visit('https://inv.bg');
+        cy.xpath('//*[@id="inheader"]/a[2]').click();
         cy.get('#login-subdomain').type('Kikotest');
         cy.xpath('//*[@id="gologin"]').click();
         cy.get("#loginusername").type('kikotestsecure@gmail.com');
         cy.get('#loginpassword').type('Kiko123@');
-        cy.get('[data-callback="submitLoginForm"]').click()
+        cy.get('[data-callback="submitLoginForm"]').click();
         cy.get('.newFeatureOKbutton').click();
         cy.xpath('//*[@id="logo"]/a/h1').should('have.text',"kikotest");
         cy.xpath("//*[@id='userpanel']/div").should("have.text",'kikotestsecure@gmail.com');
@@ -59,7 +59,6 @@ describe('Clients tests', () => {
         cy.get(':nth-child(1) > .objects-view-left-col > b').should($el => expect($el.text().trim()).to.equal('Име на артикул:'));
         cy.get(':nth-child(1) > .objects-view-right-col').should($el => expect($el.text().trim()).to.equal('Art2'));
 
-    })
-
+    });
 
 })
