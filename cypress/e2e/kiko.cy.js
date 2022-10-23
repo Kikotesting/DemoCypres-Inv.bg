@@ -24,17 +24,6 @@ describe('Tests', () => {
         dashboardPage.verify_MainHeader()
         dashboardPage.verify_panelHeader()
     });
-    defaultLogin(){
-        homePage.click_customersEntryBtn()
-        homePage.type_customerSubdomainInput()
-        homePage.click_loginBtn()
-        authenticatePage.type_email()
-        authenticatePage.type_password()
-        authenticatePage.click_submitBtn()
-        dashboardPage.click_welcomePopupBtn()
-        dashboardPage.verify_MainHeader()
-        dashboardPage.verify_panelHeader()
-    }
 
 
 })
