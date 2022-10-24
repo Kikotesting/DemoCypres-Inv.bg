@@ -1,19 +1,6 @@
 /// <reference types="cypress" />
 
 describe('Items tests', () => {
-    beforeEach(() => {
-        // Default login
-        cy.visit('https://inv.bg')
-        cy.xpath('//*[@id="inheader"]/a[2]').click()
-        cy.get('#login-subdomain').type('Kikotest')
-        cy.xpath('//*[@id="gologin"]').click()
-        cy.get("#loginusername").type('kikotestsecure@gmail.com')
-        cy.get('#loginpassword').type('Kiko123@')
-        cy.get('[data-callback="submitLoginForm"]').click()
-        cy.get('.newFeatureOKbutton').click()
-        cy.xpath('//*[@id="logo"]/a/h1').should('have.text', "kikotest")
-        cy.xpath("//*[@id='userpanel']/div").should("have.text", 'kikotestsecure@gmail.com')
-    })
     it("1.[P] Add new ITEM -> dashboard", () => {
         // Click add new item menu
         cy.get('[href="https://kikotest.inv.bg/objects/add"]').click()
