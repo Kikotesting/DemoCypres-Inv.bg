@@ -15,16 +15,12 @@ describe('Positive Login Tests', () => {
     it("1.[P] Login with valid username and valid password", () => {
         defaultPage.defaultLogIn()
     });
-    it.only("2.[P] Login and Logout functionality", () => {
-        defaultPage.defaultLogin()
-
-        dashboardPage.click_dropdownPanel()
-        dashboardPage.click_logOutBtn()
-        dashboardPage.verify_logOutMessage()
+    it("2.[P] Login and Logout functionality", () => {
+        defaultPage.defaultLogOut()
     });
 })
 describe("Negative Login Tests", () => {
-
+    const defaultPage = new (DefaultPage);
     beforeEach(() => {
         cy.visit('https://inv.bg')
     })

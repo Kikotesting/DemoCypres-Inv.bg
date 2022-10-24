@@ -17,6 +17,5 @@ export class HomePage {
         this.elements.loginBtn().click()
     }
 
-    
 
 }

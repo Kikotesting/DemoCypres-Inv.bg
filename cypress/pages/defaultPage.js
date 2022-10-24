@@ -20,6 +20,24 @@ export class DefaultPage {
         dashboardPage.verify_MainHeader()
         dashboardPage.verify_panelHeader()
     }
+    defaultLogOut(){
+        const homePage = new (HomePage);
+        const authenticatePage = new (AuthenticatePage);
+        const dashboardPage = new(DashboardPage);
+        
+        homePage.click_customersEntryBtn()
+        homePage.type_customerSubdomainInput()
+        homePage.click_loginBtn()
+        authenticatePage.type_validEmail()
+        authenticatePage.type_validPassword()
+        authenticatePage.click_submitBtn()
+        dashboardPage.click_welcomePopupBtn()
+        dashboardPage.verify_MainHeader()
+        dashboardPage.verify_panelHeader()
+        dashboardPage.click_dropdownPanel()
+        dashboardPage.click_logOutBtn()
+        dashboardPage.verify_logOutMessage()
+    }
     wrongUsernameAndPassword(){
         const homePage = new (HomePage);
         const authenticatePage = new (AuthenticatePage);
