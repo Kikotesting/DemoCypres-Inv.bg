@@ -1,37 +1,54 @@
 
 /// <reference types="cypress" />
 
-import { DashboardPage } from '../pages/dashboardPage.js';
 import {DefaultPage} from '../pages/defaultPage.js'
+import {DashboardPage} from '../pages/dashboardPage.js'
 
-describe('Tests', () => {
+describe('Positive Login Tests', () => {
     const defaultPage = new (DefaultPage);
+    const dashboardPage = new DashboardPage();
 
     beforeEach(() => {
         cy.visit('https://inv.bg')
     })
 
-    it("1.[P] Login with valid username and password", () => {
-        defaultPage.defaultLogin()
+    it("1.[P] Login with valid username and valid password", () => {
+        defaultPage.defaultLogIn()
     });
-    it("2.[N] Try: Wrong username and Wrong password", () => {
+    it.only("2.[P] Login and Logout functionality", () => {
+        defaultPage.defaultLogin()
+
+        dashboardPage.click_dropdownPanel()
+        dashboardPage.click_logOutBtn()
+        dashboardPage.verify_logOutMessage()
+    });
+})
+describe("Negative Login Tests", () => {
+
+    beforeEach(() => {
+        cy.visit('https://inv.bg')
+    })
+
+    it("1.[N] Try: Wrong username and Wrong password", () => {
         defaultPage.wrongUsernameAndPassword()
     });
-    it("3.[N] Try: Wrong username and Correct password", () => {
+    it("2.[N] Try: Wrong username and Correct password", () => {
         defaultPage.wrongUsernameAndCorrectPassword()
     });
-    it("4.[N] Try: Wrong password and Correct username", () => {
+    it("3.[N] Try: Wrong password and Correct username", () => {
         defaultPage.wrongPasswordAndCorrectUsername()
     });
-    it("5.[N] Try: Empty password field and Correct username   ", () => {
+    it("4.[N] Try: Empty password field and Correct username   ", () => {
         defaultPage.EmptyPasswordAndCorrectUsername()
     });
-    it("6.[N] Try: Empty username field and Correct password", () => {
+    it("5.[N] Try: Empty username field and Correct password", () => {
         defaultPage.EmptyUsernameAndCorrectPassword()
     });
-    it("7.[N] Try: Empty username field and Empty password field", () => {
+    it("6.[N] Try: Empty username field and Empty password field", () => {
         defaultPage.EmptyUsernameAndPassword()
     });
-
-
 })
+
+
+
+
