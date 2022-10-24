@@ -1,20 +1,11 @@
 /// <reference types="cypress" />
+import {DefaultPage} from '../pages/defaultPage.js'
 
 describe('Clients tests', () => {
 
     beforeEach(() => {
-        require('cypress-xpath');
-        // Default login
-        cy.visit('https://inv.bg');
-        cy.xpath('//*[@id="inheader"]/a[2]').click();
-        cy.get('#login-subdomain').type('Kikotest');
-        cy.xpath('//*[@id="gologin"]').click();
-        cy.get("#loginusername").type('kikotestsecure@gmail.com');
-        cy.get('#loginpassword').type('Kiko123@');
-        cy.get('[data-callback="submitLoginForm"]').click();
-        cy.get('.newFeatureOKbutton').click();
-        cy.xpath('//*[@id="logo"]/a/h1').should('have.text', "kikotest");
-        cy.xpath("//*[@id='userpanel']/div").should("have.text", 'kikotestsecure@gmail.com');
+
+        
     })
 
     it("1.[P] Add new CLIENT -> dashboard", () => {
@@ -36,20 +27,20 @@ describe('Clients tests', () => {
         cy.get('tbody > :nth-child(2) > :nth-child(2)').should('have.text', 'OneClient450');
 
     });
-    it.only("1.[P] Try to add existing CLIENT -> dashboard", () => {
+    // it("1.[P] Try to add existing CLIENT -> dashboard", () => {
 
-        // Click add new client from the dashboard
-        cy.get('[href="https://kikotest.inv.bg/clients/add"]').click();
-        //Select individual
-        cy.get('#type_person').click();
-        //Populate the client information form
-        cy.get('[name="person_name"]').type('OneClient40');
-        cy.get('[name="person_address"]').type('ul. Lozenets 23');
-        cy.get('[name="person_city"]').type('Sofia');
-        //Click submit button
-        cy.get('[name="do_submit"]').click();
-        //Assertion for added message
-        cy.get('#error').should($el => expect($el.text().trim()).to.equal('Вече съществува клиент с въведеното име и идентификатор'));
+    //     // Click add new client from the dashboard
+    //     cy.get('[href="https://kikotest.inv.bg/clients/add"]').click();
+    //     //Select individual
+    //     cy.get('#type_person').click();
+    //     //Populate the client information form
+    //     cy.get('[name="person_name"]').type('OneClient40');
+    //     cy.get('[name="person_address"]').type('ul. Lozenets 23');
+    //     cy.get('[name="person_city"]').type('Sofia');
+    //     //Click submit button
+    //     cy.get('[name="do_submit"]').click();
+    //     //Assertion for added message
+    //     cy.get('#error').should($el => expect($el.text().trim()).to.equal('Вече съществува клиент с въведеното име и идентификатор'));
 
-    });
+    // });
 })

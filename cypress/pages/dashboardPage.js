@@ -6,6 +6,7 @@ export class DashboardPage{
         dropdownPanel : () => cy.get('#userpanel'),
         logoutBtn : () => cy.get('.selenium-button-logout'),
         logOutMessage : () => cy.get('#okmsg'),
+        addItem : () => cy.get('[href="https://kikotest.inv.bg/objects/add"]')
     }
 
     // Welcome alert
@@ -26,6 +27,9 @@ export class DashboardPage{
     // Panel->dropdown menu->Logout button
     click_logOutBtn(){
         this.elements.logoutBtn().click()
+    }
+    click_addItem(){
+        this.elements.addItem().click()
     }
     // Assert for messages
     verify_logOutMessage(){
