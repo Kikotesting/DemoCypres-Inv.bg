@@ -5,7 +5,7 @@ import {DashboardPage} from './dashboardPage.js'
 
 export class DefaultPage {
 
-    defaultLogin(){
+    defaultLogIn(){
         const homePage = new (HomePage);
         const authenticatePage = new (AuthenticatePage);
         const dashboardPage = new(DashboardPage);
@@ -94,6 +94,5 @@ export class DefaultPage {
         authenticatePage.click_submitBtn()
         authenticatePage.assertErrorMessageMissingUsername()
     }
-
 
 } 
