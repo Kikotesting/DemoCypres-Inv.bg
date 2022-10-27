@@ -15,7 +15,6 @@ describe('Positive Items tests', () => {
         const itemsPage = new (ItemsPage);
         const dashboardPage = new (DashboardPage);
         
-
         defaultPage.defaultLogIn()
         dashboardPage.click_addItem()
 
@@ -34,18 +33,15 @@ describe('Positive Items tests', () => {
         itemsPage.assertHeaderItemName()
     })
 
-    it.only("2.[P] Check all added items -> dashboard", () => {
+    it("2.[P] Check added new item -> dashboard", () => {
         const defaultPage = new (DefaultPage);
         const itemsPage = new (ItemsPage);
         const dashboardPage = new (DashboardPage);
-        
 
         defaultPage.defaultLogIn()
         dashboardPage.click_topMenuItems()
-    
+        itemsPage.assertNewItem()
     })
-
-    it('Pending');
 
 
 })

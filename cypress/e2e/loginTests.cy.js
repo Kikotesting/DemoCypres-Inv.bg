@@ -1,6 +1,5 @@
 
 /// <reference types="cypress" />
-
 import {DefaultPage} from '../pages/defaultPage.js'
 import {DashboardPage} from '../pages/dashboardPage.js'
 
@@ -14,8 +13,9 @@ describe('Positive Login Tests', () => {
 
     it("1.[P] Login with valid username and valid password", () => {
         defaultPage.defaultLogIn()
+        
     });
-    it("2.[P] Login and Logout functionality", () => {
+    it.only("2.[P] Login and Logout functionality", () => {
         defaultPage.defaultLogOut()
     });
 })

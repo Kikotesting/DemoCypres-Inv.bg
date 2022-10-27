@@ -1,5 +1,7 @@
-import {v4 as uuidv4} from 'uuid';
-let randomUser = uuidv4();
+// import {v4 as uuidv4} from 'uuid';
+// let randomUser = uuidv4();
+
+import { randomUserTwo } from "../support/constant"
 
 export class ItemsPage {
     
@@ -13,11 +15,12 @@ export class ItemsPage {
         headerItemName : () => cy.get('#headline2 > h2'),
         popupModalCheckbox : () => cy.get('#disable-popup-modal'),
         popupAddBtn : () => cy.get('#popup-modal'),
+        tableWithNewItem : () => cy.get('#fakturi_table')
     }
     
     // Adding product in AddingItemPage
     type_nameItem(){
-        this.elements.nameItem().type(randomUser)
+        this.elements.nameItem().type(randomUserTwo)
     }
     type_price(){
         this.elements.price().type('102')
@@ -45,8 +48,12 @@ export class ItemsPage {
         this.elements.errorMessageExistingProduct().should($el => expect($el.text().trim()).to.equal('Вече сте добавили артикул с това име.'))
      }
     assertHeaderItemName(){
-        this.elements.headerItemName().should('have.text',randomUser)
+        this.elements.headerItemName().should('have.text',randomUserTwo)
      }
+     assertNewItem(){
+        this.elements.tableWithNewItem().contains(randomUserTwo)
+     }
+
 
 
 }

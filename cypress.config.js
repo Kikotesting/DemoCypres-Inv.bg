@@ -5,6 +5,7 @@ module.exports = defineConfig({
   e2e: {
     baseUrl: 'http://localhost:9991',
     "video": false,
-    "screenshots": false
+    "screenshots": false,
+    "experimentalSessionAndOrigin": true
   },
 });
