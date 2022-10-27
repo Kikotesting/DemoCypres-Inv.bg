@@ -1,5 +1,7 @@
+import {v4 as uuidv4} from 'uuid';
+let randomUser = uuidv4();
 export class ItemsPage {
-
+    
     elements = {
         nameItem : () => cy.get(':nth-child(1) > [width="170"] > .input--height24px'),
         price : () => cy.get(':nth-child(3) > [width="170"] > .input--height24px'),
@@ -11,10 +13,10 @@ export class ItemsPage {
         popupModalCheckbox : () => cy.get('#disable-popup-modal'),
         popupAddBtn : () => cy.get('#popup-modal'),
     }
-
+    
     // Adding product
     type_nameItem(){
-        this.elements.nameItem().type('Oficer5')
+        this.elements.nameItem().type(randomUser)
     }
     type_price(){
         this.elements.price().type('102')
@@ -42,7 +44,7 @@ export class ItemsPage {
         this.elements.errorMessageExistingProduct().should($el => expect($el.text().trim()).to.equal('Вече сте добавили артикул с това име.'))
      }
     assertHeaderItemName(){
-        this.elements.headerItemName().should('have.text','Oficer5')
+        this.elements.headerItemName().should('have.text',randomUser)
      }
 
 

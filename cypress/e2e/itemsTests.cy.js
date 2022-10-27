@@ -4,13 +4,17 @@ import {ItemsPage} from '../pages/itemsPage.js'
 import {DashboardPage} from '../pages/dashboardPage.js'
 
 describe('Positive Items tests', () => {
+    
     beforeEach(() => {
         cy.visit('https://inv.bg')
     })
-    it("1.[P] Add NEW Item -> dashboard", () => {
+
+    it.only("1.[P] Add NEW Item -> dashboard", () => {
+        
         const defaultPage = new (DefaultPage);
         const itemsPage = new (ItemsPage);
         const dashboardPage = new (DashboardPage);
+        
 
         defaultPage.defaultLogIn()
         dashboardPage.click_addItem()
@@ -30,7 +34,7 @@ describe('Positive Items tests', () => {
         itemsPage.assertHeaderItemName()
     })
 
-    it.only("2.[P] Add EXISTING Item -> dashboard", () => {
+    it("2.[P] Add EXISTING Item -> dashboard", () => {
         const defaultPage = new (DefaultPage);
         const itemsPage = new (ItemsPage);
         const dashboardPage = new (DashboardPage);
@@ -49,4 +53,8 @@ describe('Positive Items tests', () => {
         itemsPage.assertExistingProductErrorMessage()
     })
 
+    it('Pending');
+
+
 })
+
