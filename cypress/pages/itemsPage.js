@@ -1,5 +1,6 @@
 import {v4 as uuidv4} from 'uuid';
 let randomUser = uuidv4();
+
 export class ItemsPage {
     
     elements = {
@@ -14,7 +15,7 @@ export class ItemsPage {
         popupAddBtn : () => cy.get('#popup-modal'),
     }
     
-    // Adding product
+    // Adding product in AddingItemPage
     type_nameItem(){
         this.elements.nameItem().type(randomUser)
     }
@@ -36,7 +37,7 @@ export class ItemsPage {
     click_popupAddBtn(){
         this.elements.popupAddBtn().click()
     }
-    //Assertions
+    //Assertions in Adding ItemPage
     assertAddedItemSuccessMessage(){
        this.elements.successefullyMessage().should($el => expect($el.text().trim()).to.equal('Артикулът е добавен успешно.'))
     }
