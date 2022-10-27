@@ -10,13 +10,14 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "cypress": "^10.10.0",
+    "cypress": "^10.11.0",
     "cypress-xpath": "^2.0.1",
     "typescript": "^4.8.4"
   },
   "dependencies": {
     "@applitools/eyes-cypress": "^3.27.4",
     "@cypress/commit-info": "^2.2.0",
-    "jshint": "^2.13.5"
+    "jshint": "^2.13.5",
+    "uuid": "^9.0.0"
   }
 }

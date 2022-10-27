@@ -6,7 +6,24 @@ export class DashboardPage{
         dropdownPanel : () => cy.get('#userpanel'),
         logoutBtn : () => cy.get('.selenium-button-logout'),
         logOutMessage : () => cy.get('#okmsg'),
-        addItem : () => cy.get('[href="https://kikotest.inv.bg/objects/add"]')
+        addItem : () => cy.get('[href="https://kikotest.inv.bg/objects/add"]'),
+
+        topMenuClients : () => cy.get('#tabs_clients > .topmenu'),
+        topMenuItems : () => cy.get('#tabs_objects > .topmenu'),
+        topMenuDocs : () => cy.get('#tabs_documents > .topmenu'),
+
+
+    }
+
+    //Top menus
+    click_topMenuClients(){
+        this.elements.topMenuClients().click()
+    }
+    click_topMenuItems(){
+        this.elements.topMenuItems().click()
+    }
+    click_topMenuDocs(){
+        this.elements.topMenuDocs().click()
     }
 
     // Welcome alert
