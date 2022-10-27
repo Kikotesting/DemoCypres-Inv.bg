@@ -10,6 +10,3 @@ module.exports = defineConfig({
     "screenshots": false
   },
 });
-
-
-require('@applitools/eyes-cypress')(module);
