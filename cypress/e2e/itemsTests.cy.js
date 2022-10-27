@@ -9,7 +9,7 @@ describe('Positive Items tests', () => {
         cy.visit('https://inv.bg')
     })
 
-    it.only("1.[P] Add NEW Item -> dashboard", () => {
+    it("1.[P] Add NEW Item -> dashboard", () => {
         
         const defaultPage = new (DefaultPage);
         const itemsPage = new (ItemsPage);
@@ -34,23 +34,15 @@ describe('Positive Items tests', () => {
         itemsPage.assertHeaderItemName()
     })
 
-    it("2.[P] Add EXISTING Item -> dashboard", () => {
+    it.only("2.[P] Check all added items -> dashboard", () => {
         const defaultPage = new (DefaultPage);
         const itemsPage = new (ItemsPage);
         const dashboardPage = new (DashboardPage);
+        
 
         defaultPage.defaultLogIn()
-        dashboardPage.click_addItem()
-
-        itemsPage.type_nameItem()
-        itemsPage.type_price()
-
-        itemsPage.clear_quantity()
-        itemsPage.type_quantity()
-
-        itemsPage.click_addItemBtn()
-
-        itemsPage.assertExistingProductErrorMessage()
+        dashboardPage.click_topMenuItems()
+    
     })
 
     it('Pending');
