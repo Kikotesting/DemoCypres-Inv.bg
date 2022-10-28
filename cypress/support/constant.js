@@ -31,6 +31,7 @@ export const LOGOUT_MESSAGE = 'Вие излязохте от акаунта с�
  export const QUANTITY_ITEM = '1';
  export const MESSAGE_ITEM_ADDED = 'Артикулът е добавен успешно.';
  export const MESSAGE_ITEM_EXIST = 'Вече сте добавили артикул с това име.';
+ export const MESSAGE_DELETE_ALL_ITEMS = 'Все още нямате добавени артикули.';
  
 
 

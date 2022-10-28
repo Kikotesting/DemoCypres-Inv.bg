@@ -1,4 +1,11 @@
-import { randomUserString, QUANTITY_ITEM, PRICE_ITEM, MESSAGE_ITEM_ADDED, MESSAGE_ITEM_EXIST } from "../support/constant"
+import { 
+     randomUserString,
+     QUANTITY_ITEM, 
+     PRICE_ITEM, 
+     MESSAGE_ITEM_ADDED, 
+     MESSAGE_ITEM_EXIST,
+     MESSAGE_DELETE_ALL_ITEMS } 
+     from "../support/constant"
 
 export class ItemsPage {
     
@@ -7,14 +14,18 @@ export class ItemsPage {
         price : () => cy.get(':nth-child(3) > [width="170"] > .input--height24px'),
         quantity : () => cy.get('div > .input--height24px'),
         addItemBtn : () => cy.get('.selenium-items-add-form-btn'),
-        successefullyMessage : () => cy.get('#okmsg'),
+        successMessageForAddItem : () => cy.get('#okmsg'),
         errorMessageExistingProduct : () => cy.get('#whiterow2 > :nth-child(3)'),
         headerItemName : () => cy.get('#headline2 > h2'),
         popupModalCheckbox : () => cy.get('#disable-popup-modal'),
         popupAddBtn : () => cy.get('#popup-modal'),
-        tableWithNewItem : () => cy.get('#fakturi_table')
+        tableWithNewItem : () => cy.get('#fakturi_table'),
+
+        checkBoxAllItems : () => cy.get('#handle_all'),
+        deleteItemsBtn : () => cy.get('#delbtn'),
+        messageForDelete : () => cy.get('#emptylist'),
     }
-    // Adding product in AddingItemPage
+    // Adding item in AddingItemPage
     type_nameItem(){
         this.elements.nameItem().type(randomUserString)
     }
@@ -36,9 +47,19 @@ export class ItemsPage {
     click_popupAddBtn(){
         this.elements.popupAddBtn().click()
     }
+
+    // Delete item/s
+    click_checkboxAllItems(){
+        this.elements.checkBoxAllItems().click()
+    }
+    click_deleteItemsBtn(){
+        this.elements.deleteItemsBtn().click()
+    }
+
+
     //Assertions in Adding ItemPage
     assertAddedItemSuccessMessage(){
-       this.elements.successefullyMessage().should($el => expect($el.text().trim()).to.equal(MESSAGE_ITEM_ADDED))
+       this.elements.successMessageForAddItem().should($el => expect($el.text().trim()).to.equal(MESSAGE_ITEM_ADDED))
     }
     assertExistingProductErrorMessage(){
         this.elements.errorMessageExistingProduct().should($el => expect($el.text().trim()).to.equal(MESSAGE_ITEM_EXIST))
@@ -49,6 +70,9 @@ export class ItemsPage {
      assertNewItem(){
         this.elements.tableWithNewItem().contains(randomUserString)
      }
+     assertNoRecords(){
+        this.elements.messageForDelete().should($el => expect($el.text().trim()).to.equal(MESSAGE_DELETE_ALL_ITEMS))
+    }
 
 
 
