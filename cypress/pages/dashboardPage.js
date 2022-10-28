@@ -1,3 +1,5 @@
+import { LOGOUT_MESSAGE} from "../support/constant"
+
 export class DashboardPage{
     elements = {
         welcomePopupBtn : () => cy.get('.newFeatureOKbutton'),
@@ -50,6 +52,6 @@ export class DashboardPage{
     }
     // Assert for messages
     verify_logOutMessage(){
-        this.elements.logOutMessage().should($el => expect($el.text().trim()).to.equal('Вие излязохте от акаунта си.'));
+        this.elements.logOutMessage().should($el => expect($el.text().trim()).to.equal(LOGOUT_MESSAGE));
     }
 }

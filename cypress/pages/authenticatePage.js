@@ -1,17 +1,29 @@
+import { 
+    ERROR_MESSAGE_MissingEmailUsername,
+    ERROR_MESSAGE_MissingPassword,
+    ERROR_MESSAGE_InvalidEmailAndPassword,
+    EMAIL_USERNAME_AUTH, 
+    PASSWORD_USERNAME_AUTH,
+    Invalid_EMAIL_AUTH, 
+    Invalid_PASSWORD_AUTH 
+     } 
+    from "../support/constant"
+
     export class AuthenticatePage{
 
         elements = {
         emailInput : () => cy.get('#loginusername'),
         passwordInput : () => cy.get('#loginpassword'),
-        submitBtn : () => cy.get('#loginsubmit')
+        submitBtn : () => cy.get('#loginsubmit'),
+        errorMessage : () => cy.get('#error'),
         }
 
         // Valid data
         type_validEmail(){
-            this.elements.emailInput().type('kikotestsecure@gmail.com')
+            this.elements.emailInput().type(EMAIL_USERNAME_AUTH)
         }
         type_validPassword(){
-            this.elements.passwordInput().type('Kiko123@')
+            this.elements.passwordInput().type(PASSWORD_USERNAME_AUTH)
         }
         click_submitBtn(){
             this.elements.submitBtn().click()
@@ -19,10 +31,10 @@
 
         // Invalid data
         type_InvalidEmail(){
-            this.elements.emailInput().type('sifdsdbb@m.com')
+            this.elements.emailInput().type(Invalid_EMAIL_AUTH)
         }
         type_InvalidPassword(){
-            this.elements.passwordInput().type('Kdsssdssd4')
+            this.elements.passwordInput().type(Invalid_PASSWORD_AUTH)
         }
 
         //Empty data
@@ -35,18 +47,14 @@
 
         //Assertion error messages
         assertErrorMessageInvalidEmailAndPassword(){
-            cy.get('#error').should($el => expect($el.text().trim()).to.equal('Грешно потребителско име или парола. Моля, опитайте отново.'));
+           this.elements.errorMessage().should($el => expect($el.text().trim()).to.equal(ERROR_MESSAGE_InvalidEmailAndPassword));
         }
         assertErrorMessageMissingPassword(){
-            cy.get('#error').should($el => expect($el.text().trim()).to.equal('Моля, попълнете вашата парола'));
+            this.elements.errorMessage().should($el => expect($el.text().trim()).to.equal(ERROR_MESSAGE_MissingPassword));
         }
         assertErrorMessageMissingUsername(){
-            cy.get('#error').should($el => expect($el.text().trim()).to.equal('Моля, попълнете вашия email'));
+            this.elements.errorMessage().should($el => expect($el.text().trim()).to.equal(ERROR_MESSAGE_MissingEmailUsername));
         }
-          
-          
-    
-
     }
     
     

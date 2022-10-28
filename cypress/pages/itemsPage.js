@@ -1,7 +1,4 @@
-// import {v4 as uuidv4} from 'uuid';
-// let randomUser = uuidv4();
-
-import { randomUserTwo } from "../support/constant"
+import { randomUserString, QUANTITY_ITEM, PRICE_ITEM, MESSAGE_ITEM_ADDED, MESSAGE_ITEM_EXIST } from "../support/constant"
 
 export class ItemsPage {
     
@@ -17,16 +14,15 @@ export class ItemsPage {
         popupAddBtn : () => cy.get('#popup-modal'),
         tableWithNewItem : () => cy.get('#fakturi_table')
     }
-    
     // Adding product in AddingItemPage
     type_nameItem(){
-        this.elements.nameItem().type(randomUserTwo)
+        this.elements.nameItem().type(randomUserString)
     }
     type_price(){
-        this.elements.price().type('102')
+        this.elements.price().type(PRICE_ITEM)
     }
     type_quantity(){
-        this.elements.quantity().type('123')
+        this.elements.quantity().type(QUANTITY_ITEM)
     }
     clear_quantity(){
         this.elements.quantity().clear()
@@ -42,16 +38,16 @@ export class ItemsPage {
     }
     //Assertions in Adding ItemPage
     assertAddedItemSuccessMessage(){
-       this.elements.successefullyMessage().should($el => expect($el.text().trim()).to.equal('Артикулът е добавен успешно.'))
+       this.elements.successefullyMessage().should($el => expect($el.text().trim()).to.equal(MESSAGE_ITEM_ADDED))
     }
     assertExistingProductErrorMessage(){
-        this.elements.errorMessageExistingProduct().should($el => expect($el.text().trim()).to.equal('Вече сте добавили артикул с това име.'))
+        this.elements.errorMessageExistingProduct().should($el => expect($el.text().trim()).to.equal(MESSAGE_ITEM_EXIST))
      }
     assertHeaderItemName(){
-        this.elements.headerItemName().should('have.text',randomUserTwo)
+        this.elements.headerItemName().should('have.text',randomUserString)
      }
      assertNewItem(){
-        this.elements.tableWithNewItem().contains(randomUserTwo)
+        this.elements.tableWithNewItem().contains(randomUserString)
      }
 
 

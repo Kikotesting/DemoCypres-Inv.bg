@@ -23,6 +23,3 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-Cypress.Commands.add("loginForMyExcitel", (username, password, primaryPhone, subscriberId) => {
-    cy.visit('www.google.bg')
-})

@@ -6,7 +6,7 @@ import {DashboardPage} from '../pages/dashboardPage.js'
 describe('Positive Items tests', () => {
     
     beforeEach(() => {
-        cy.visit('https://inv.bg')
+        cy.visit('http://www.inv.bg')
     })
 
     it("1.[P] Add NEW Item -> dashboard", () => {
@@ -42,7 +42,6 @@ describe('Positive Items tests', () => {
         dashboardPage.click_topMenuItems()
         itemsPage.assertNewItem()
     })
-
 
 })
 
