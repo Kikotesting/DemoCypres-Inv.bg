@@ -15,7 +15,7 @@ describe('Positive Login Tests', () => {
         defaultPage.defaultLogIn()
         
     });
-    it.only("2.[P] Login and Logout functionality", () => {
+    it("2.[P] Login and Logout functionality", () => {
         defaultPage.defaultLogOut()
     });
 })

@@ -1,7 +1,11 @@
-// import {v4 as uuidv4} from 'uuid';
-// let randomUser = uuidv4();
-
-import { randomUserTwo } from "../support/constant"
+import { 
+     randomUserString,
+     QUANTITY_ITEM, 
+     PRICE_ITEM, 
+     MESSAGE_ITEM_ADDED, 
+     MESSAGE_ITEM_EXIST,
+     MESSAGE_DELETE_ALL_ITEMS } 
+     from "../support/constant"
 
 export class ItemsPage {
     
@@ -10,23 +14,26 @@ export class ItemsPage {
         price : () => cy.get(':nth-child(3) > [width="170"] > .input--height24px'),
         quantity : () => cy.get('div > .input--height24px'),
         addItemBtn : () => cy.get('.selenium-items-add-form-btn'),
-        successefullyMessage : () => cy.get('#okmsg'),
+        successMessageForAddItem : () => cy.get('#okmsg'),
         errorMessageExistingProduct : () => cy.get('#whiterow2 > :nth-child(3)'),
         headerItemName : () => cy.get('#headline2 > h2'),
         popupModalCheckbox : () => cy.get('#disable-popup-modal'),
         popupAddBtn : () => cy.get('#popup-modal'),
-        tableWithNewItem : () => cy.get('#fakturi_table')
+        tableWithNewItem : () => cy.get('#fakturi_table'),
+
+        checkBoxAllItems : () => cy.get('#handle_all'),
+        deleteItemsBtn : () => cy.get('#delbtn'),
+        messageForDelete : () => cy.get('#emptylist'),
     }
-    
-    // Adding product in AddingItemPage
+    // Adding item in AddingItemPage
     type_nameItem(){
-        this.elements.nameItem().type(randomUserTwo)
+        this.elements.nameItem().type(randomUserString)
     }
     type_price(){
-        this.elements.price().type('102')
+        this.elements.price().type(PRICE_ITEM)
     }
     type_quantity(){
-        this.elements.quantity().type('123')
+        this.elements.quantity().type(QUANTITY_ITEM)
     }
     clear_quantity(){
         this.elements.quantity().clear()
@@ -40,19 +47,32 @@ export class ItemsPage {
     click_popupAddBtn(){
         this.elements.popupAddBtn().click()
     }
+
+    // Delete item/s
+    click_checkboxAllItems(){
+        this.elements.checkBoxAllItems().click()
+    }
+    click_deleteItemsBtn(){
+        this.elements.deleteItemsBtn().click()
+    }
+
+
     //Assertions in Adding ItemPage
     assertAddedItemSuccessMessage(){
-       this.elements.successefullyMessage().should($el => expect($el.text().trim()).to.equal('Артикулът е добавен успешно.'))
+       this.elements.successMessageForAddItem().should($el => expect($el.text().trim()).to.equal(MESSAGE_ITEM_ADDED))
     }
     assertExistingProductErrorMessage(){
-        this.elements.errorMessageExistingProduct().should($el => expect($el.text().trim()).to.equal('Вече сте добавили артикул с това име.'))
+        this.elements.errorMessageExistingProduct().should($el => expect($el.text().trim()).to.equal(MESSAGE_ITEM_EXIST))
      }
     assertHeaderItemName(){
-        this.elements.headerItemName().should('have.text',randomUserTwo)
+        this.elements.headerItemName().should('have.text',randomUserString)
      }
      assertNewItem(){
-        this.elements.tableWithNewItem().contains(randomUserTwo)
+        this.elements.tableWithNewItem().contains(randomUserString)
      }
+     assertNoRecords(){
+        this.elements.messageForDelete().should($el => expect($el.text().trim()).to.equal(MESSAGE_DELETE_ALL_ITEMS))
+    }
 
 
 
