@@ -5,7 +5,8 @@ import {
      MESSAGE_ITEM_ADDED, 
      MESSAGE_ITEM_EXIST,
      MESSAGE_DELETE_ALL_ITEMS,
-     MESSAGE_SAVE_CHANGING_ITEM } 
+     MESSAGE_SAVE_CHANGING_ITEM,
+     PRICE_EDIT_ITEM } 
      from "../support/constant"
      
 
@@ -71,6 +72,9 @@ export class ItemsPage {
     }
     click_SaveItemBtn(){
         this.elements.saveItemBtn().click()
+    }
+    type_NewPrice(){
+        this.elements.price().clear().type(PRICE_EDIT_ITEM)
     }
     assertChangedItemMessage(){
         this.elements.successMessageForAddItem().contains(MESSAGE_SAVE_CHANGING_ITEM)

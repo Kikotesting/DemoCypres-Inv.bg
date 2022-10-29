@@ -51,6 +51,7 @@ import {DashboardPage} from '../pages/dashboardPage.js'
             itemsPage.click_addedNewItem()
             itemsPage.click_EditItemBtn()
             itemsPage.edit_NameOfChoosenItem()
+            itemsPage.type_NewPrice()
             itemsPage.click_SaveItemBtn()
             itemsPage.assertChangedItemMessage()
             

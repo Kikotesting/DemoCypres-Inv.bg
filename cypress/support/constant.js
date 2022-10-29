@@ -28,6 +28,7 @@ export const LOGOUT_MESSAGE = 'Вие излязохте от акаунта с�
  * ===========================================
  */
  export const PRICE_ITEM = '10';
+ export const PRICE_EDIT_ITEM = '1230';
  export const QUANTITY_ITEM = '1';
  export const MESSAGE_ITEM_ADDED = 'Артикулът е добавен успешно.';
  export const MESSAGE_ITEM_EXIST = 'Вече сте добавили артикул с това име.';
