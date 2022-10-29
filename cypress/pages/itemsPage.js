@@ -29,6 +29,9 @@ export class ItemsPage {
         checkBoxAllItems : () => cy.get('#handle_all'),
         deleteItemsBtn : () => cy.get('#delbtn'),
         messageForDelete : () => cy.get('#emptylist'),
+        searchBtn : () => cy.get('#searchbtn'),
+        searchField : () => cy.get('input[name="nm"]'),
+        searchingBtn : () => cy.get('input[name="s"]'),
     }
     // Adding item in AddingItemPage
     type_nameItem(){
@@ -60,6 +63,7 @@ export class ItemsPage {
     click_deleteItemsBtn(){
         this.elements.deleteItemsBtn().click()
     }
+
     // Edit new Item
     click_addedNewItem(){
         this.elements.tableWithNewItem().contains(randomUserString).click()
@@ -79,8 +83,20 @@ export class ItemsPage {
     assertChangedItemMessage(){
         this.elements.successMessageForAddItem().contains(MESSAGE_SAVE_CHANGING_ITEM)
      }
-    
 
+    //Search items
+    click_SearchBtn(){
+        this.elements.searchBtn().click()
+    }
+    click_SearchingBtn(){
+        this.elements.searchingBtn().click()
+    }
+    type_SearchItem(){
+        this.elements.searchField().clear().type(randomUserString)
+    }
+    assertNoMoreItemsDespiteFoundOne(){
+        this.elements.tableWithNewItem().should('have.length', 1)
+    }
 
     //Assertions in Adding ItemPage
     assertAddedItemSuccessMessage(){

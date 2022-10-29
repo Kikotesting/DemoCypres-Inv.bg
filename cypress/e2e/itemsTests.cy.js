@@ -31,7 +31,7 @@ import {DashboardPage} from '../pages/dashboardPage.js'
             itemsPage.assertAddedItemSuccessMessage()
             itemsPage.assertHeaderItemName()
         })
-        it("2.[P] Check added new item", () => {
+        it.skip("2.[P] Check added new item", () => {
             const defaultPage = new (DefaultPage);
             const itemsPage = new (ItemsPage);
             const dashboardPage = new (DashboardPage);
@@ -40,7 +40,7 @@ import {DashboardPage} from '../pages/dashboardPage.js'
             dashboardPage.click_topMenuItems()
             itemsPage.assertNewItem()
         })
-        it("3.[P] Edit existing item", () => {
+        it.skip("3.[P] Edit existing item", () => {
             const defaultPage = new (DefaultPage);
             const itemsPage = new (ItemsPage);
             const dashboardPage = new (DashboardPage);
@@ -54,12 +54,22 @@ import {DashboardPage} from '../pages/dashboardPage.js'
             itemsPage.type_NewPrice()
             itemsPage.click_SaveItemBtn()
             itemsPage.assertChangedItemMessage()
+        })
+        it("4.[P] Search existing item", () => {
+            const defaultPage = new (DefaultPage);
+            const itemsPage = new (ItemsPage);
+            const dashboardPage = new (DashboardPage);
+    
+            defaultPage.defaultLogIn()
+            dashboardPage.click_topMenuItems()
+            itemsPage.click_SearchBtn()
+            itemsPage.type_SearchItem()
+            itemsPage.click_SearchingBtn()
+            itemsPage.assertNoMoreItemsDespiteFoundOne()
             
         })
 
-
-
-        it.skip("4.[P] Delete all existing items", () => {
+        it.skip("?.[P] Delete all existing items", () => {
             const defaultPage = new (DefaultPage);
             const itemsPage = new (ItemsPage);
             const dashboardPage = new (DashboardPage);
