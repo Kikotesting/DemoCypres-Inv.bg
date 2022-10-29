@@ -4,12 +4,15 @@ import {
      PRICE_ITEM, 
      MESSAGE_ITEM_ADDED, 
      MESSAGE_ITEM_EXIST,
-     MESSAGE_DELETE_ALL_ITEMS } 
+     MESSAGE_DELETE_ALL_ITEMS,
+     MESSAGE_SAVE_CHANGING_ITEM } 
      from "../support/constant"
+     
 
 export class ItemsPage {
     
     elements = {
+        
         nameItem : () => cy.get(':nth-child(1) > [width="170"] > .input--height24px'),
         price : () => cy.get(':nth-child(3) > [width="170"] > .input--height24px'),
         quantity : () => cy.get('div > .input--height24px'),
@@ -20,7 +23,8 @@ export class ItemsPage {
         popupModalCheckbox : () => cy.get('#disable-popup-modal'),
         popupAddBtn : () => cy.get('#popup-modal'),
         tableWithNewItem : () => cy.get('#fakturi_table'),
-
+        editItemBtn : () => cy.xpath('//*[@id="faktura_controls"]/a[2]'),
+        saveItemBtn : () => cy.get('.button--height24px'),
         checkBoxAllItems : () => cy.get('#handle_all'),
         deleteItemsBtn : () => cy.get('#delbtn'),
         messageForDelete : () => cy.get('#emptylist'),
@@ -55,6 +59,23 @@ export class ItemsPage {
     click_deleteItemsBtn(){
         this.elements.deleteItemsBtn().click()
     }
+    // Edit new Item
+    click_addedNewItem(){
+        this.elements.tableWithNewItem().contains(randomUserString).click()
+    }
+    click_EditItemBtn(){
+        this.elements.editItemBtn().click()
+    }
+    edit_NameOfChoosenItem(){
+        this.elements.nameItem().clear().type(randomUserString.split('-').pop())
+    }
+    click_SaveItemBtn(){
+        this.elements.saveItemBtn().click()
+    }
+    assertChangedItemMessage(){
+        this.elements.successMessageForAddItem().contains(MESSAGE_SAVE_CHANGING_ITEM)
+     }
+    
 
 
     //Assertions in Adding ItemPage
