@@ -5,6 +5,6 @@ module.exports = defineConfig({
   e2e: {
     "video": false,
     "screenshots": false,
-    "experimentalSessionAndOrigin": true
+    "experimentalSessionAndOrigin": true,
   },
 });

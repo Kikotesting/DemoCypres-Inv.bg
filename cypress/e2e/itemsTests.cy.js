@@ -9,7 +9,7 @@ import {DashboardPage} from '../pages/dashboardPage.js'
             cy.visit('http://www.inv.bg')
         })
     
-        it("1.[P] Add NEW Items (4 times) -> dashboard", () => {
+        it("1.[P] Add NEW Item", () => {
             const defaultPage = new (DefaultPage);
             const itemsPage = new (ItemsPage);
             const dashboardPage = new (DashboardPage);
@@ -31,7 +31,7 @@ import {DashboardPage} from '../pages/dashboardPage.js'
             itemsPage.assertAddedItemSuccessMessage()
             itemsPage.assertHeaderItemName()
         })
-        it.skip("2.[P] Check added new item", () => {
+        it("2.[P] Check added new item", () => {
             const defaultPage = new (DefaultPage);
             const itemsPage = new (ItemsPage);
             const dashboardPage = new (DashboardPage);
@@ -40,7 +40,20 @@ import {DashboardPage} from '../pages/dashboardPage.js'
             dashboardPage.click_topMenuItems()
             itemsPage.assertNewItem()
         })
-        it.skip("3.[P] Edit existing item", () => {
+        it("3.[P] Search existing item", () => {
+            const defaultPage = new (DefaultPage);
+            const itemsPage = new (ItemsPage);
+            const dashboardPage = new (DashboardPage);
+    
+            defaultPage.defaultLogIn()
+            dashboardPage.click_topMenuItems()
+            itemsPage.click_SearchBtn()
+            itemsPage.type_SearchItem()
+            itemsPage.click_SearchingBtn()
+            itemsPage.assertNoMoreItemsDespiteFoundOne()
+            
+        })
+        it("4.[P] Edit existing item", () => {
             const defaultPage = new (DefaultPage);
             const itemsPage = new (ItemsPage);
             const dashboardPage = new (DashboardPage);
@@ -55,29 +68,15 @@ import {DashboardPage} from '../pages/dashboardPage.js'
             itemsPage.click_SaveItemBtn()
             itemsPage.assertChangedItemMessage()
         })
-        it("4.[P] Search existing item", () => {
+        it("5.[P] Delete all existing items", () => {
             const defaultPage = new (DefaultPage);
             const itemsPage = new (ItemsPage);
             const dashboardPage = new (DashboardPage);
     
             defaultPage.defaultLogIn()
             dashboardPage.click_topMenuItems()
-            itemsPage.click_SearchBtn()
-            itemsPage.type_SearchItem()
-            itemsPage.click_SearchingBtn()
-            itemsPage.assertNoMoreItemsDespiteFoundOne()
-            
-        })
-
-        it.skip("?.[P] Delete all existing items", () => {
-            const defaultPage = new (DefaultPage);
-            const itemsPage = new (ItemsPage);
-            const dashboardPage = new (DashboardPage);
-    
-            defaultPage.defaultLogIn()
-            dashboardPage.click_topMenuItems()
-            //itemsPage.click_checkboxAllItems()
-            //itemsPage.click_deleteItemsBtn()
+            itemsPage.click_checkboxAllItems()
+            itemsPage.click_deleteItemsBtn()
             itemsPage.assertNoRecords()
             
            
