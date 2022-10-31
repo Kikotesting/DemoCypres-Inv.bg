@@ -2,7 +2,6 @@
 import {DefaultPage} from '../pages/defaultPage.js'
 import {DashboardPage} from '../pages/dashboardPage.js'
 import {ClientsPage} from '../pages/clientsPage'
-import { cli } from 'cypress'
 
     describe('Positive Items tests', () => {
     
@@ -40,6 +39,7 @@ import { cli } from 'cypress'
             clientsPage.save_EditClientChanges()
             clientsPage.assertMessageForEditChanges()
         })
+
  
     
     })
