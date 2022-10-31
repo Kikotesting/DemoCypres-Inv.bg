@@ -1,5 +1,6 @@
 import { randomUserString, 
         MESSAGE_ADDED_CLIENT,
+        MESSAGE_EDIT_CLIENT,
       } 
      from "../support/constant"
      
@@ -20,8 +21,13 @@ export class ClientsPage {
 
         submitNewClientBtn : () => cy.get('[name="do_submit"]'),
         successAddedClient : () => cy.get('#okmsg'),
-        
+
+        tableWithClients : () => cy.get('#fakturi_table'),
+        editClientBtn : () => cy.get('.slenium-client-button-edit'),
+
+
     }
+    // Add client
     click_addNewClientBtn(){
         this.elements.addNewClientBtn().click()
     }
@@ -46,10 +52,28 @@ export class ClientsPage {
     click_submitNewClientBtn(){
         this.elements.submitNewClientBtn().click()
     }
-
     assertAddedClientMessage(){
         this.elements.successAddedClient().should($el => expect($el.text().trim()).to.equal(MESSAGE_ADDED_CLIENT))
     }
+
+    // Edit client data
+    edit_FoundClient(){
+        this.elements.tableWithClients().contains(randomUserString).click()
+    }
+    click_EditClientBtn(){
+        this.elements.editClientBtn().click()
+    }
+    type_EditPersonName(){
+        this.elements.personName_field().clear().type(randomUserString.slice(1,5))
+    }
+    save_EditClientChanges(){
+        this.elements.submitNewClientBtn().click()
+    }
+    assertMessageForEditChanges(){
+        this.elements.successAddedClient().should($el => expect($el.text().trim()).to.equal(MESSAGE_EDIT_CLIENT))
+    }
+    
+    
     
 
 

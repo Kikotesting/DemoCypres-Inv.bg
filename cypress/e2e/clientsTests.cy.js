@@ -9,7 +9,7 @@ import {ClientsPage} from '../pages/clientsPage'
             cy.visit('http://www.inv.bg')
         })
     
-        it("1.[P] Add NEW Item", () => {
+        it("1.[P] Add NEW client", () => {
             const defaultPage = new (DefaultPage);
             const dashboardPage = new (DashboardPage);
             const clientsPage = new (ClientsPage);
@@ -26,6 +26,20 @@ import {ClientsPage} from '../pages/clientsPage'
             clientsPage.click_submitNewClientBtn()
             clientsPage.assertAddedClientMessage()
         })
+        it("2.[P] Edit exist client data", () => {
+            const defaultPage = new (DefaultPage);
+            const dashboardPage = new (DashboardPage);
+            const clientsPage = new (ClientsPage);
+
+            defaultPage.defaultLogIn()
+            dashboardPage.click_topMenuClients()
+            clientsPage.edit_FoundClient()
+            clientsPage.click_EditClientBtn()
+            clientsPage.type_EditPersonName()
+            clientsPage.save_EditClientChanges()
+            clientsPage.assertMessageForEditChanges()
+        })
+
  
     
     })
