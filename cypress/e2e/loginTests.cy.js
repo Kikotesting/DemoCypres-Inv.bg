@@ -2,8 +2,10 @@
 /// <reference types="cypress" />
 import {DefaultPage} from '../pages/defaultPage.js'
 import {DashboardPage} from '../pages/dashboardPage.js'
+import {HomePage} from '../pages/homePage.js'
 
 describe('Positive Login Tests', () => {
+    const homePage = new (HomePage);
     const defaultPage = new (DefaultPage);
     const dashboardPage = new DashboardPage();
 
@@ -11,15 +13,24 @@ describe('Positive Login Tests', () => {
         cy.visit('https://inv.bg')
     })
 
-    it("1.[P] Login with valid username and valid password", () => {
+    it.skip("1.[P] Login with valid username and valid password", () => {
         defaultPage.defaultLogIn()
         
     });
-    it("2.[P] Login and Logout functionality", () => {
+    it.skip("2.[P] Login and Logout functionality", () => {
         defaultPage.defaultLogOut()
     });
+    it("3.[P] Forgot password functionality", () => {
+        homePage.click_customersEntryBtn()
+        homePage.type_customerSubdomainInput()
+        homePage.click_loginBtn()
+        homePage.click_forgotPasswordLink()
+        homePage.type_forgottenEmail()
+        homePage.click_submitBtn()
+    });
+
 })
-describe("Negative Login Tests", () => {
+describe.skip("Negative Login Tests", () => {
     const defaultPage = new (DefaultPage);
     beforeEach(() => {
         cy.visit('https://inv.bg')
