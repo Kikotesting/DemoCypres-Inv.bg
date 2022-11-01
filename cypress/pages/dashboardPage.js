@@ -13,8 +13,6 @@ export class DashboardPage{
         topMenuClients : () => cy.get('#tabs_clients > .topmenu'),
         topMenuItems : () => cy.get('#tabs_objects > .topmenu'),
         topMenuDocs : () => cy.get('#tabs_documents > .topmenu'),
-
-
     }
 
     //Top menus

@@ -1,10 +1,9 @@
-import { randomUserString, 
+import { randomUserString,
         MESSAGE_ADDED_CLIENT,
         MESSAGE_EDIT_CLIENT,
       } 
      from "../support/constant"
      
-
 export class ClientsPage {
     
     elements = {
@@ -24,7 +23,6 @@ export class ClientsPage {
 
         tableWithClients : () => cy.get('#fakturi_table'),
         editClientBtn : () => cy.get('.slenium-client-button-edit'),
-
 
     }
     // Add client
@@ -58,24 +56,22 @@ export class ClientsPage {
 
     // Edit client data
     edit_FoundClient(){
-        this.elements.tableWithClients().contains(randomUserString).click()
+        this.elements.tableWithClients().contains(randomUserString.slice(1,7)).click()
     }
     click_EditClientBtn(){
         this.elements.editClientBtn().click()
     }
     type_EditPersonName(){
-        this.elements.personName_field().clear().type(randomUserString.slice(1,5))
+        // stayed only numbers and delete the words
+        //this.elements.personName_field().clear().type(randomUserString.replace(/\D/g, ""))
+        this.elements.personName_field().clear().type(randomUserString.replace(/[0-9]/g, ''))
     }
     save_EditClientChanges(){
         this.elements.submitNewClientBtn().click()
     }
     assertMessageForEditChanges(){
-        this.elements.successAddedClient().should($el => expect($el.text().trim()).to.equal(MESSAGE_EDIT_CLIENT))
+        this.elements.successAddedClient().should($el =>
+             expect($el.text().trim()).to.equal(MESSAGE_EDIT_CLIENT))
     }
-    
-    
-    
-
-
 
 }

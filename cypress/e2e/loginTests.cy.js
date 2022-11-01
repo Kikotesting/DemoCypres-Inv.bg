@@ -13,11 +13,11 @@ describe('Positive Login Tests', () => {
         cy.visit('https://inv.bg')
     })
 
-    it.skip("1.[P] Login with valid username and valid password", () => {
+    it("1.[P] Login with valid username and valid password", () => {
         defaultPage.defaultLogIn()
         
     });
-    it.skip("2.[P] Login and Logout functionality", () => {
+    it("2.[P] Login and Logout functionality", () => {
         defaultPage.defaultLogOut()
     });
     it("3.[P] Forgot password functionality", () => {
