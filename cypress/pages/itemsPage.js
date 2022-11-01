@@ -105,7 +105,8 @@ export class ItemsPage {
         
     }
     assertExistingProductErrorMessage(){
-        this.elements.errorMessageExistingProduct().should($el => expect($el.text().trim()).to.equal(MESSAGE_ITEM_EXIST))
+        this.elements.errorMessageExistingProduct().should($el => 
+            expect($el.text().trim()).to.equal(MESSAGE_ITEM_EXIST))
      }
     assertHeaderItemName(){
         this.elements.headerItemName().should('have.text',randomUserString)
@@ -114,7 +115,8 @@ export class ItemsPage {
         this.elements.tableWithNewItem().contains(randomUserString)
      }
      assertNoRecords(){
-        this.elements.messageForDelete().should($el => expect($el.text().trim()).to.equal(MESSAGE_DELETE_ALL_ITEMS))
+        this.elements.messageForDelete().should($el =>
+             expect($el.text().trim()).to.equal(MESSAGE_DELETE_ALL_ITEMS))
     }
 
 

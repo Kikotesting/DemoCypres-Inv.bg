@@ -4,7 +4,6 @@ import { randomUserString,
       } 
      from "../support/constant"
      
-
 export class ClientsPage {
     
     elements = {
@@ -24,7 +23,6 @@ export class ClientsPage {
 
         tableWithClients : () => cy.get('#fakturi_table'),
         editClientBtn : () => cy.get('.slenium-client-button-edit'),
-
 
     }
     // Add client
@@ -72,13 +70,8 @@ export class ClientsPage {
         this.elements.submitNewClientBtn().click()
     }
     assertMessageForEditChanges(){
-        this.elements.successAddedClient().should($el => expect($el.text().trim()).to.equal(MESSAGE_EDIT_CLIENT))
+        this.elements.successAddedClient().should($el =>
+             expect($el.text().trim()).to.equal(MESSAGE_EDIT_CLIENT))
     }
-    
-    
-    
-    
-
-
 
 }

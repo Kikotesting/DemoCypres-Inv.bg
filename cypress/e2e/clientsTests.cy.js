@@ -10,7 +10,7 @@ import {ClientsPage} from '../pages/clientsPage'
         })
         // command for repeat
         Cypress._.times(1, (k) => {
-            it(`1.[P] Add NEW client ${k + 1} / 100`, () => {
+            it(`1.[P] Add NEW client ${k + 1}`, () => {
                 const defaultPage = new (DefaultPage);
                 const dashboardPage = new (DashboardPage);
                 const clientsPage = new (ClientsPage);
@@ -40,8 +40,6 @@ import {ClientsPage} from '../pages/clientsPage'
                 clientsPage.type_EditPersonName()
                 clientsPage.save_EditClientChanges()
                 clientsPage.assertMessageForEditChanges()
-
-                kiko = cy.get('.kiko').should('have.text','kkiko').and()
             })
  
     
