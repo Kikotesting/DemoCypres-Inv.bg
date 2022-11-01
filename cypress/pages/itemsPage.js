@@ -72,7 +72,7 @@ export class ItemsPage {
         this.elements.editItemBtn().click()
     }
     edit_NameOfChoosenItem(){
-        this.elements.nameItem().clear().type(randomUserString.split('-').pop())
+        this.elements.nameItem().clear().type(randomUserString)
     }
     click_SaveItemBtn(){
         this.elements.saveItemBtn().click()
@@ -100,7 +100,9 @@ export class ItemsPage {
 
     //Assertions in Adding ItemPage
     assertAddedItemSuccessMessage(){
-       this.elements.successMessageForAddItem().should($el => expect($el.text().trim()).to.equal(MESSAGE_ITEM_ADDED))
+       this.elements.successMessageForAddItem().should($el => 
+        expect($el.text().trim()).to.equal(MESSAGE_ITEM_ADDED));
+        
     }
     assertExistingProductErrorMessage(){
         this.elements.errorMessageExistingProduct().should($el => expect($el.text().trim()).to.equal(MESSAGE_ITEM_EXIST))
