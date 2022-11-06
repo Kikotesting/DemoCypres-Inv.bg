@@ -11,6 +11,7 @@
   "license": "ISC",
   "devDependencies": {
     "@cypress/grep": "^3.1.0",
+    "chai": "^4.3.6",
     "cypress": "^10.11.0",
     "cypress-xpath": "^2.0.1",
     "eslint-plugin-cypress": "^2.12.1",
