@@ -8,4 +8,10 @@ module.exports = defineConfig({
     "screenshots": false,
     "experimentalSessionAndOrigin": true,
   },
+  before: function (capabilities, specs) {
+    chai = require('chai');
+    assert = chai.assert;
+    expect = chai.expect;
+    should = chai.should();
+  }
 });
