@@ -1,6 +1,7 @@
 // Generating different userString each time
 import {v4 as uuidv4} from 'uuid';
-export const randomUserString = uuidv4();
+export let randomUserString = uuidv4();
+
 
 /**
  * Authenticate Page
