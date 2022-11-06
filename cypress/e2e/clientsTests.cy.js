@@ -15,6 +15,7 @@ import {ClientsPage} from '../pages/clientsPage'
                 const dashboardPage = new (DashboardPage);
                 const clientsPage = new (ClientsPage);
 
+                expect(defaultPage).to.be.an('object')
                 defaultPage.defaultLogIn()
                 dashboardPage.click_topMenuClients()
                 clientsPage.click_addNewClientBtn()
@@ -28,19 +29,19 @@ import {ClientsPage} from '../pages/clientsPage'
                 clientsPage.assertAddedClientMessage()
             })
         })
-            it("2.[P] Edit exist client data", () => {
-                const defaultPage = new (DefaultPage);
-                const dashboardPage = new (DashboardPage);
-                const clientsPage = new (ClientsPage);
+        it("2.[P] Edit exist client data", () => {
+            const defaultPage = new (DefaultPage);
+            const dashboardPage = new (DashboardPage);
+            const clientsPage = new (ClientsPage);
 
-                defaultPage.defaultLogIn()
-                dashboardPage.click_topMenuClients()
-                clientsPage.edit_FoundClient()
-                clientsPage.click_EditClientBtn()
-                clientsPage.type_EditPersonName()
-                clientsPage.save_EditClientChanges()
-                clientsPage.assertMessageForEditChanges()
-            })
+            defaultPage.defaultLogIn()
+            dashboardPage.click_topMenuClients()
+            clientsPage.edit_FoundClient()
+            clientsPage.click_EditClientBtn()
+            clientsPage.type_EditPersonName()
+            clientsPage.save_EditClientChanges()
+            clientsPage.assertMessageForEditChanges()
+        })
  
     
     })
