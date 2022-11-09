@@ -15,8 +15,8 @@ export class ItemsPage {
     elements = {
         
         nameItem : () => cy.get(':nth-child(1) > [width="170"] > .input--height24px'),
-        price : () => cy.get(':nth-child(3) > [width="170"] > .input--height24px'),
-        quantity : () => cy.get('div > .input--height24px'),
+        price : () => cy.get('[name="price"]'),
+        quantity : () => cy.get('[name="price_quantity"]'),
         addItemBtn : () => cy.get('.selenium-items-add-form-btn'),
         successMessageForAddItem : () => cy.get('#okmsg'),
         errorMessageExistingProduct : () => cy.get('#whiterow2 > :nth-child(3)'),
@@ -25,7 +25,7 @@ export class ItemsPage {
         popupAddBtn : () => cy.get('#popup-modal'),
         tableWithNewItem : () => cy.get('#fakturi_table'),
         editItemBtn : () => cy.xpath('//*[@id="faktura_controls"]/a[2]'),
-        saveItemBtn : () => cy.get('.button--height24px'),
+        saveItemBtn : () => cy.contains('Запази'),
         checkBoxAllItems : () => cy.get('#handle_all'),
         deleteItemsBtn : () => cy.get('#delbtn'),
         messageForDelete : () => cy.get('#emptylist'),
@@ -72,13 +72,13 @@ export class ItemsPage {
         this.elements.editItemBtn().click()
     }
     edit_NameOfChoosenItem(){
-        this.elements.nameItem().clear().type(randomUserString)
+        this.elements.nameItem().click().clear().type('Pestoooo123')
     }
     click_SaveItemBtn(){
         this.elements.saveItemBtn().click()
     }
-    type_NewPrice(){
-        this.elements.price().clear().type(PRICE_EDIT_ITEM)
+    edit_NewPrice(){
+        this.elements.price().click().clear().type('2')
     }
     assertChangedItemMessage(){
         this.elements.successMessageForAddItem().contains(MESSAGE_SAVE_CHANGING_ITEM)

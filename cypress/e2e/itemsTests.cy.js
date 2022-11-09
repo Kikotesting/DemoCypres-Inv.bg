@@ -9,7 +9,7 @@ import {DashboardPage} from '../pages/dashboardPage.js'
             cy.visit('http://www.inv.bg')
         })
     
-        it("1.[P] Add NEW Item", () => {
+        it.only("1.[P] Add NEW Item", () => {
             const defaultPage = new (DefaultPage);
             const itemsPage = new (ItemsPage);
             const dashboardPage = new (DashboardPage);
@@ -53,7 +53,7 @@ import {DashboardPage} from '../pages/dashboardPage.js'
             itemsPage.assertNoMoreItemsDespiteFoundOne()
             
         })
-        it("4.[P] Edit existing item", () => {
+        it.only("4.[P] Edit existing item", () => {
             const defaultPage = new (DefaultPage);
             const itemsPage = new (ItemsPage);
             const dashboardPage = new (DashboardPage);
@@ -64,7 +64,7 @@ import {DashboardPage} from '../pages/dashboardPage.js'
             itemsPage.click_addedNewItem()
             itemsPage.click_EditItemBtn()
             itemsPage.edit_NameOfChoosenItem()
-            itemsPage.type_NewPrice()
+            itemsPage.edit_NewPrice()
             itemsPage.click_SaveItemBtn()
             itemsPage.assertChangedItemMessage()
         })
