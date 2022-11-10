@@ -1,6 +1,17 @@
-// Generating different userString each time
-import {v4 as uuidv4} from 'uuid';
-export let randomUserString = uuidv4();
+
+/**
+ * FAKER DATA
+ * ===========================================
+ */
+import { faker } from '@faker-js/faker';
+
+export let randomName = faker.name.firstName('male');
+export let randomEditName = faker.name.middleName('male');
+
+export let randomProductName = faker.commerce.product();
+export let randomEmail = faker.internet.email();
+export let randomIntPrice = faker.datatype.number();
+export let randomFloatPrice = faker.datatype.float();
 
 
 /**
@@ -9,7 +20,7 @@ export let randomUserString = uuidv4();
  */
 // Login data 
 export const EMAIL_USERNAME_AUTH = "Kikotestsecure@gmail.com";
-export const PASSWORD_USERNAME_AUTH = 'Kiko123@'
+export const PASSWORD_USERNAME_AUTH = 'Kiko123@';
 // Invalid data 
 export const Invalid_EMAIL_AUTH = 'sifdsdbb@m.com';
 export const Invalid_PASSWORD_AUTH = 'Kdsssdssd4';
@@ -28,9 +39,6 @@ export const LOGOUT_MESSAGE = 'Вие излязохте от акаунта с�
  * Items Page
  * ===========================================
  */
- export const PRICE_ITEM = '10';
- export const PRICE_EDIT_ITEM = '1230';
- export const QUANTITY_ITEM = '1';
  export const MESSAGE_ITEM_ADDED = 'Артикулът е добавен успешно.';
  export const MESSAGE_ITEM_EXIST = 'Вече сте добавили артикул с това име.';
  export const MESSAGE_DELETE_ALL_ITEMS = 'Все още нямате добавени артикули.';
@@ -40,7 +48,7 @@ export const LOGOUT_MESSAGE = 'Вие излязохте от акаунта с�
  * Clients Page
  * ===========================================
  */
- export const MESSAGE_ADDED_CLIENT = 'Клиентът е добавен успешно.'
- export const MESSAGE_EDIT_CLIENT = 'Информацията е редактирана успешно.'
+ export const MESSAGE_ADDED_CLIENT = 'Клиентът е добавен успешно.';
+ export const MESSAGE_EDIT_CLIENT = 'Информацията е редактирана успешно.';
  
 

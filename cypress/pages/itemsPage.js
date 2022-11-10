@@ -1,22 +1,20 @@
 import { 
-     randomUserString,
-     QUANTITY_ITEM, 
-     PRICE_ITEM, 
      MESSAGE_ITEM_ADDED, 
      MESSAGE_ITEM_EXIST,
      MESSAGE_DELETE_ALL_ITEMS,
      MESSAGE_SAVE_CHANGING_ITEM,
-     PRICE_EDIT_ITEM } 
-     from "../support/constant"
+     randomProductName, randomIntPrice, randomEditName
+      } 
+     from "../support/constant.js"
      
 
 export class ItemsPage {
     
     elements = {
         
-        nameItem : () => cy.get(':nth-child(1) > [width="170"] > .input--height24px'),
-        price : () => cy.get('[name="price"]'),
-        quantity : () => cy.get('[name="price_quantity"]'),
+        nameOfItem : () => cy.get('[name="name"'),
+        priceOfItem : () => cy.get('[name="price"]'),
+        quantityOfItem : () => cy.get('[name="price_quantity"]'),
         addItemBtn : () => cy.get('.selenium-items-add-form-btn'),
         successMessageForAddItem : () => cy.get('#okmsg'),
         errorMessageExistingProduct : () => cy.get('#whiterow2 > :nth-child(3)'),
@@ -24,7 +22,7 @@ export class ItemsPage {
         popupModalCheckbox : () => cy.get('#disable-popup-modal'),
         popupAddBtn : () => cy.get('#popup-modal'),
         tableWithNewItem : () => cy.get('#fakturi_table'),
-        editItemBtn : () => cy.xpath('//*[@id="faktura_controls"]/a[2]'),
+        editItemBtn : () => cy.contains('Редактирай'),
         saveItemBtn : () => cy.contains('Запази'),
         checkBoxAllItems : () => cy.get('#handle_all'),
         deleteItemsBtn : () => cy.get('#delbtn'),
@@ -32,19 +30,17 @@ export class ItemsPage {
         searchBtn : () => cy.get('#searchbtn'),
         searchField : () => cy.get('input[name="nm"]'),
         searchingBtn : () => cy.get('input[name="s"]'),
+        modalForSure : () => cy.get('.modal-confirm__ok-button'),
     }
     // Adding item in AddingItemPage
-    type_nameItem(){
-        this.elements.nameItem().type(randomUserString)
+    type_NameOfItem(){
+        this.elements.nameOfItem().type(randomProductName)
     }
-    type_price(){
-        this.elements.price().type(PRICE_ITEM)
+    type_PriceOfItemInt(){
+        this.elements.priceOfItem().type(randomIntPrice)
     }
-    type_quantity(){
-        this.elements.quantity().type(QUANTITY_ITEM)
-    }
-    clear_quantity(){
-        this.elements.quantity().clear()
+    type_quantityOfItem(){
+        this.elements.quantityOfItem().clear().type(randomIntPrice)
     }
     click_addItemBtn(){
         this.elements.addItemBtn().click()
@@ -54,6 +50,9 @@ export class ItemsPage {
     }
     click_popupAddBtn(){
         this.elements.popupAddBtn().click()
+    }
+    click_modalForSure(){
+        this.elements.modalForSure().click()
     }
 
     // Delete item/s
@@ -65,23 +64,28 @@ export class ItemsPage {
     }
 
     // Edit new Item
-    click_addedNewItem(){
-        this.elements.tableWithNewItem().contains(randomUserString).click()
+    click_addedItem(){
+        this.elements.tableWithNewItem().contains(randomProductName).click()
     }
     click_EditItemBtn(){
         this.elements.editItemBtn().click()
     }
-    edit_NameOfChoosenItem(){
-        this.elements.nameItem().click().clear().type('Pestoooo123')
+    edit_NameOfItem(){
+        this.elements.nameOfItem()
+        .clear()
+        .type(randomEditName)
     }
-    click_SaveItemBtn(){
+    edit_PriceOfItem(){
+        this.elements.priceOfItem()
+        .clear()
+        .type(randomIntPrice)
+    }
+    click_SaveEditItemBtn(){
         this.elements.saveItemBtn().click()
     }
-    edit_NewPrice(){
-        this.elements.price().click().clear().type('2')
-    }
-    assertChangedItemMessage(){
+    assertMessageForEditItem(){
         this.elements.successMessageForAddItem().contains(MESSAGE_SAVE_CHANGING_ITEM)
+        this.elements.successMessageForAddItem().should('have.css', 'color: #018102')
      }
 
     //Search items
@@ -92,7 +96,7 @@ export class ItemsPage {
         this.elements.searchingBtn().click()
     }
     type_SearchItem(){
-        this.elements.searchField().clear().type(randomUserString)
+        this.elements.searchField().clear().type(randomProductName)
     }
     assertNoMoreItemsDespiteFoundOne(){
         this.elements.tableWithNewItem().should('have.length', 1)
@@ -109,12 +113,12 @@ export class ItemsPage {
             expect($el.text().trim()).to.equal(MESSAGE_ITEM_EXIST))
      }
     assertHeaderItemName(){
-        this.elements.headerItemName().should('have.text',randomUserString)
+        this.elements.headerItemName().should('have.text',randomProductName)
      }
-     assertNewItem(){
-        this.elements.tableWithNewItem().contains(randomUserString)
+    assertAddedItem(){
+        this.elements.tableWithNewItem().contains(randomProductName)
      }
-     assertNoRecords(){
+    assertNoRecords(){
         this.elements.messageForDelete().should($el =>
              expect($el.text().trim()).to.equal(MESSAGE_DELETE_ALL_ITEMS))
     }

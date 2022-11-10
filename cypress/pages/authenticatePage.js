@@ -7,7 +7,7 @@ import {
     Invalid_EMAIL_AUTH, 
     Invalid_PASSWORD_AUTH 
      } 
-    from "../support/constant"
+    from "../support/constant.js"
 
     export class AuthenticatePage{
 
@@ -25,6 +25,7 @@ import {
         type_validPassword(){
             this.elements.passwordInput().type(PASSWORD_USERNAME_AUTH)
         }
+
         click_submitBtn(){
             this.elements.submitBtn().click()
         }

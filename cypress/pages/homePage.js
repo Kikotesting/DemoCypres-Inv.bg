@@ -1,4 +1,4 @@
-import { randomUserString } from "../support/constant"
+import { randomUserString } from "../support/constant.js"
 
 export class HomePage {
 
