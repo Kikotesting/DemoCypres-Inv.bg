@@ -36,7 +36,7 @@ import {DashboardPage} from '../pages/dashboardPage.js'
     
             defaultPage.defaultLogIn()
             dashboardPage.click_topMenuItems()
-            itemsPage.assertNewItem()
+            itemsPage.assertAddedItem()
         })
         it("3.Search existing item", () => {
             const defaultPage = new (DefaultPage);
@@ -75,7 +75,8 @@ import {DashboardPage} from '../pages/dashboardPage.js'
             itemsPage.click_checkboxAllItems()
             itemsPage.click_deleteItemsBtn()
             itemsPage.click_modalForSure()
-            itemsPage.assertNoRecords()
+            itemsPage.assertNoRecordsMessage()
+            itemsPage.assertDeletedItemsMessage()
         })
     
     })
