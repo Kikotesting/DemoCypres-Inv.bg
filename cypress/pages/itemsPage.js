@@ -3,6 +3,7 @@ import {
      MESSAGE_ITEM_EXIST,
      MESSAGE_DELETE_ALL_ITEMS,
      MESSAGE_SAVE_CHANGING_ITEM,
+     MESSAGE_DELETE_ITEMS_SUCCESS,
      randomProductName, randomIntPrice, randomEditName
       } 
      from "../support/constant.js"
@@ -31,6 +32,7 @@ export class ItemsPage {
         searchField : () => cy.get('input[name="nm"]'),
         searchingBtn : () => cy.get('input[name="s"]'),
         modalForSure : () => cy.get('.modal-confirm__ok-button'),
+        successMessageForDeleteItem : () => cy.get('#okmsg'),
     }
     // Adding item in AddingItemPage
     type_NameOfItem(){
@@ -62,6 +64,11 @@ export class ItemsPage {
     click_deleteItemsBtn(){
         this.elements.deleteItemsBtn().click()
     }
+    assertDeletedItemsMessage(){
+        this.elements.successMessageForDeleteItem().should($el => 
+         expect($el.text().trim()).to.equal(MESSAGE_DELETE_ITEMS_SUCCESS));
+         
+     }
 
     // Edit new Item
     click_addedItem(){
@@ -85,7 +92,6 @@ export class ItemsPage {
     }
     assertMessageForEditItem(){
         this.elements.successMessageForAddItem().contains(MESSAGE_SAVE_CHANGING_ITEM)
-        this.elements.successMessageForAddItem().should('have.css', 'color: #018102')
      }
 
     //Search items
@@ -118,7 +124,7 @@ export class ItemsPage {
     assertAddedItem(){
         this.elements.tableWithNewItem().contains(randomProductName)
      }
-    assertNoRecords(){
+    assertNoRecordsMessage(){
         this.elements.messageForDelete().should($el =>
              expect($el.text().trim()).to.equal(MESSAGE_DELETE_ALL_ITEMS))
     }
