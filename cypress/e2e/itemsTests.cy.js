@@ -9,20 +9,18 @@ import {DashboardPage} from '../pages/dashboardPage.js'
             cy.visit('http://www.inv.bg')
         })
     
-        it.only("1.[P] Add NEW Item", () => {
+        it("1.Add NEW Item", () => {
             const defaultPage = new (DefaultPage);
             const itemsPage = new (ItemsPage);
             const dashboardPage = new (DashboardPage);
     
             defaultPage.defaultLogIn()
             dashboardPage.click_addItem()
-    
-            itemsPage.type_nameItem()
-            itemsPage.type_price()
-    
-            itemsPage.clear_quantity()
-            itemsPage.type_quantity()
-    
+
+            itemsPage.type_NameOfItem()
+            itemsPage.type_PriceOfItemInt()
+            itemsPage.type_quantityOfItem()
+
             itemsPage.click_addItemBtn()
     
             // itemsPage.click_popupModalCheckbox()
@@ -31,7 +29,7 @@ import {DashboardPage} from '../pages/dashboardPage.js'
             itemsPage.assertAddedItemSuccessMessage()
             itemsPage.assertHeaderItemName()
         })
-        it("2.[P] Check added new item", () => {
+        it("2.Check added new item", () => {
             const defaultPage = new (DefaultPage);
             const itemsPage = new (ItemsPage);
             const dashboardPage = new (DashboardPage);
@@ -40,47 +38,44 @@ import {DashboardPage} from '../pages/dashboardPage.js'
             dashboardPage.click_topMenuItems()
             itemsPage.assertNewItem()
         })
-        it("3.[P] Search existing item", () => {
+        it("3.Search existing item", () => {
             const defaultPage = new (DefaultPage);
-            const itemsPage = new (ItemsPage);
-            const dashboardPage = new (DashboardPage);
-    
             defaultPage.defaultLogIn()
+            const dashboardPage = new (DashboardPage);
             dashboardPage.click_topMenuItems()
+
+            const itemsPage = new (ItemsPage);
             itemsPage.click_SearchBtn()
             itemsPage.type_SearchItem()
             itemsPage.click_SearchingBtn()
-            itemsPage.assertNoMoreItemsDespiteFoundOne()
+            itemsPage.assertNoMoreItemsDespiteFoundOne() 
+        })
+        it("4.Edit existing item", () => {
+            const defaultPage = new (DefaultPage);
+            defaultPage.defaultLogIn()
             
-        })
-        it.only("4.[P] Edit existing item", () => {
-            const defaultPage = new (DefaultPage);
-            const itemsPage = new (ItemsPage);
             const dashboardPage = new (DashboardPage);
-    
-            defaultPage.defaultLogIn()
             dashboardPage.click_topMenuItems()
-            itemsPage.assertNewItem()
-            itemsPage.click_addedNewItem()
+            
+            const itemsPage = new (ItemsPage);
+            itemsPage.assertAddedItem()
+            itemsPage.click_addedItem()
             itemsPage.click_EditItemBtn()
-            itemsPage.edit_NameOfChoosenItem()
-            itemsPage.edit_NewPrice()
-            itemsPage.click_SaveItemBtn()
-            itemsPage.assertChangedItemMessage()
+            itemsPage.edit_NameOfItem()
+            itemsPage.edit_PriceOfItem()
+            itemsPage.click_SaveEditItemBtn()
+            itemsPage.assertMessageForEditItem()
         })
-        it("5.[P] Delete all existing items", () => {
+        it("5.Delete all existing items", () => {
             const defaultPage = new (DefaultPage);
-            const itemsPage = new (ItemsPage);
-            const dashboardPage = new (DashboardPage);
-    
             defaultPage.defaultLogIn()
+            const dashboardPage = new (DashboardPage);
             dashboardPage.click_topMenuItems()
+            const itemsPage = new (ItemsPage);
             itemsPage.click_checkboxAllItems()
             itemsPage.click_deleteItemsBtn()
+            itemsPage.click_modalForSure()
             itemsPage.assertNoRecords()
-            
-           
-    
         })
     
     })

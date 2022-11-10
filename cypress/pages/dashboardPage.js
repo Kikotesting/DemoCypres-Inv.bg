@@ -1,4 +1,4 @@
-import { LOGOUT_MESSAGE} from "../support/constant"
+import { LOGOUT_MESSAGE } from "../support/constant.js"
 
 export class DashboardPage{
     elements = {

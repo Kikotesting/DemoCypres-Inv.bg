@@ -2,7 +2,7 @@ import { randomUserString,
         MESSAGE_ADDED_CLIENT,
         MESSAGE_EDIT_CLIENT,
       } 
-     from "../support/constant"
+     from "../support/constant.js"
      
 export class ClientsPage {
     
