@@ -41,6 +41,17 @@ import {ClientsPage} from '../pages/clientsPage'
             clientsPage.save_EditClientChanges()
             clientsPage.assertMessageForEditChanges()
         })
+        it("3.[P] Delete exist client data", () => {
+            const defaultPage = new (DefaultPage);
+            const dashboardPage = new (DashboardPage);
+            const clientsPage = new (ClientsPage);
+
+            defaultPage.defaultLogIn()
+            dashboardPage.click_topMenuClients()
+            clientsPage.click_Client()
+            clientsPage.click_DeleteBtn()
+            clientsPage.assertMessageForDeleteClient()
+        })
  
     
     })
