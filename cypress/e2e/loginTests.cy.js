@@ -10,7 +10,7 @@ describe('Positive Login Tests', () => {
     const dashboardPage = new DashboardPage();
 
     beforeEach(() => {
-        cy.visit('https://inv.bg')
+        cy.visit('https://inv.bg/')
     })
 
     it("1.[P] Login with valid username and valid password", () => {
@@ -30,7 +30,7 @@ describe('Positive Login Tests', () => {
     });
 
 })
-describe.skip("Negative Login Tests", () => {
+describe("Negative Login Tests", () => {
     const defaultPage = new (DefaultPage);
     beforeEach(() => {
         cy.visit('https://inv.bg')

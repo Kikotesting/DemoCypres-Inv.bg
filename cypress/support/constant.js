@@ -7,6 +7,10 @@ import { faker } from '@faker-js/faker';
 
 export let randomName = faker.name.firstName('male');
 export let randomEditName = faker.name.middleName('male');
+export let randomFullName = faker.name.fullName();
+export let randomAddress = faker.address.streetAddress();
+export let randomCity = faker.address.city();
+export let randomGsmNumber = faker.phone.number('+359 ###-###-###');
 
 export let randomProductName = faker.commerce.product();
 export let randomEmail = faker.internet.email();
