@@ -1,4 +1,4 @@
-import { randomUserString,
+import { randomFullName,randomAddress,randomGsmNumber, randomCity,
         MESSAGE_ADDED_CLIENT,
         MESSAGE_EDIT_CLIENT,
       } 
@@ -33,19 +33,19 @@ export class ClientsPage {
         this.elements.checkboxPersonal().click()
     }
     type_personName(){
-        this.elements.personName_field().clear().type(randomUserString)
+        this.elements.personName_field().clear().type(randomFullName)
     }
     type_personAddress(){
-        this.elements.personAddress_field().type(randomUserString)
+        this.elements.personAddress_field().type(randomAddress)
     }
     type_personCity(){
-        this.elements.personCity_field().type('Sofia')
+        this.elements.personCity_field().type(randomCity)
     }
     select_phoneTypeMobile(){
         this.elements.phoneTypeSelector().select('Мобилен').should('have.value','mobile')
     }
     type_MobileNumber(){
-        this.elements.personPhone_field().type('0878111222')
+        this.elements.personPhone_field().type(randomGsmNumber)
     }
     click_submitNewClientBtn(){
         this.elements.submitNewClientBtn().click()
@@ -56,7 +56,7 @@ export class ClientsPage {
 
     // Edit client data
     edit_FoundClient(){
-        this.elements.tableWithClients().contains(randomUserString.slice(1,7)).click()
+        this.elements.tableWithClients().contains(randomFullName).click()
     }
     click_EditClientBtn(){
         this.elements.editClientBtn().click()
@@ -64,7 +64,7 @@ export class ClientsPage {
     type_EditPersonName(){
         // stayed only numbers and delete the words
         //this.elements.personName_field().clear().type(randomUserString.replace(/\D/g, ""))
-        this.elements.personName_field().clear().type(randomUserString.replace(/[0-9]/g, ''))
+        this.elements.personName_field().clear().type(randomFullName)
     }
     save_EditClientChanges(){
         this.elements.submitNewClientBtn().click()

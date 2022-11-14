@@ -96,7 +96,7 @@ export class DefaultPage {
         homePage.type_customerSubdomainInput()
         homePage.click_loginBtn()
         authenticatePage.type_validEmail()
-        authenticatePage.type_EmptyPassword
+        authenticatePage.type_EmptyPassword()
         authenticatePage.click_submitBtn()
         authenticatePage.assertErrorMessageMissingPassword()
     }
@@ -108,7 +108,7 @@ export class DefaultPage {
         homePage.type_customerSubdomainInput()
         homePage.click_loginBtn()
         authenticatePage.type_EmptyEmail()
-        authenticatePage.type_validPassword
+        authenticatePage.type_validPassword()
         authenticatePage.click_submitBtn()
         authenticatePage.assertErrorMessageMissingUsername()
     }
