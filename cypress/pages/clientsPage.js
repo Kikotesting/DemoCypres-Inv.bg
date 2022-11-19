@@ -1,5 +1,6 @@
-import { randomFullName,randomAddress,randomGsmNumber, randomCity,
+import { randomFullName,randomAddress,randomGsmNumber, randomCity,randomEditName,
         MESSAGE_ADDED_CLIENT,
+        MESSAGE_DELETED_CLIENT,
         MESSAGE_EDIT_CLIENT,
       } 
      from "../support/constant.js"
@@ -20,9 +21,12 @@ export class ClientsPage {
 
         submitNewClientBtn : () => cy.get('[name="do_submit"]'),
         successAddedClient : () => cy.get('#okmsg'),
+        successDeletedClient : () => cy.get('#okmsg'),
 
         tableWithClients : () => cy.get('#fakturi_table'),
         editClientBtn : () => cy.get('.slenium-client-button-edit'),
+
+        deleteBtn : () => cy.get('#delete--btn'),
 
     }
     // Add client
@@ -62,9 +66,7 @@ export class ClientsPage {
         this.elements.editClientBtn().click()
     }
     type_EditPersonName(){
-        // stayed only numbers and delete the words
-        //this.elements.personName_field().clear().type(randomUserString.replace(/\D/g, ""))
-        this.elements.personName_field().clear().type(randomFullName)
+        this.elements.personName_field().clear().type("Edit-" + randomEditName)
     }
     save_EditClientChanges(){
         this.elements.submitNewClientBtn().click()
@@ -73,5 +75,18 @@ export class ClientsPage {
         this.elements.successAddedClient().should($el =>
              expect($el.text().trim()).to.equal(MESSAGE_EDIT_CLIENT))
     }
+    
+    // Delete client data
+    click_Client(){
+        this.elements.tableWithClients().contains(randomFullName).click()
+    }
+    click_DeleteBtn(){
+        this.elements.deleteBtn().click()
+    }
+    assertMessageForDeleteClient(){
+        this.elements.successDeletedClient().should($el =>
+             expect($el.text().trim()).to.equal(MESSAGE_DELETED_CLIENT))
+    }
+    
 
 }
