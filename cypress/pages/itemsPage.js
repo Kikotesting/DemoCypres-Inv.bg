@@ -1,10 +1,10 @@
 import { 
      MESSAGE_ITEM_ADDED, 
      MESSAGE_ITEM_EXIST,
-     MESSAGE_DELETE_ALL_ITEMS,
+     MESSAGE_NOTFOUND_ITEMS,
      MESSAGE_SAVE_CHANGING_ITEM,
      MESSAGE_DELETE_ITEMS_SUCCESS,
-     randomProductName, randomIntPrice, randomEditName
+     randomProductName, randomIntPrice, randomEditName, MESSAGE_DELETE_ITEM
       } 
      from "../support/constant.js"
      
@@ -33,6 +33,7 @@ export class ItemsPage {
         searchingBtn : () => cy.get('input[name="s"]'),
         modalForSure : () => cy.get('.modal-confirm__ok-button'),
         successMessageForDeleteItem : () => cy.get('#okmsg'),
+        emptyListMessage : () => cy.xpath('//*[@id="emptylist"]'),
     }
     // Adding item in AddingItemPage
     type_NameOfItem(){
@@ -64,9 +65,20 @@ export class ItemsPage {
     click_deleteItemsBtn(){
         this.elements.deleteItemsBtn().click()
     }
-    assertDeletedItemsMessage(){
+    
+     assertNotFoundItemsMessage(){
+    this.elements.emptyListMessage().should($el => 
+        expect($el.text().trim()).to.equal(MESSAGE_NOTFOUND_ITEMS));
+         
+     }
+     assertDeletedItemsMessage(){
         this.elements.successMessageForDeleteItem().should($el => 
          expect($el.text().trim()).to.equal(MESSAGE_DELETE_ITEMS_SUCCESS));
+         
+     }
+     assertDeletedItemMessage(){
+        this.elements.successMessageForDeleteItem().should($el => 
+         expect($el.text().trim()).to.equal(MESSAGE_DELETE_ITEM));
          
      }
 
@@ -107,6 +119,9 @@ export class ItemsPage {
     assertNoMoreItemsDespiteFoundOne(){
         this.elements.tableWithNewItem().should('have.length', 1)
     }
+    assertItemsFoundThird(){
+        this.elements.tableWithNewItem().should('have.length', 3)
+    }
 
     //Assertions in Adding ItemPage
     assertAddedItemSuccessMessage(){
@@ -124,10 +139,6 @@ export class ItemsPage {
     assertAddedItem(){
         this.elements.tableWithNewItem().contains(randomProductName)
      }
-    assertNoRecordsMessage(){
-        this.elements.messageForDelete().should($el =>
-             expect($el.text().trim()).to.equal(MESSAGE_DELETE_ALL_ITEMS))
-    }
 
 
 
