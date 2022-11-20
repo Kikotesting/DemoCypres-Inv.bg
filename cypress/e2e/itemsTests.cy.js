@@ -9,7 +9,7 @@ import {DashboardPage} from '../pages/dashboardPage.js'
             cy.visit('http://www.inv.bg')
         })
     
-        it.skip("1.Add NEW Item", () => {
+        it("1.Add NEW Item", () => {
             const defaultPage = new (DefaultPage);
             const itemsPage = new (ItemsPage);
             const dashboardPage = new (DashboardPage);
@@ -29,7 +29,7 @@ import {DashboardPage} from '../pages/dashboardPage.js'
             itemsPage.assertAddedItemSuccessMessage()
             itemsPage.assertHeaderItemName()
         })
-        it.skip("2.Check added new item", () => {
+        it("2.Check added new item", () => {
             const defaultPage = new (DefaultPage);
             const itemsPage = new (ItemsPage);
             const dashboardPage = new (DashboardPage);
@@ -38,7 +38,7 @@ import {DashboardPage} from '../pages/dashboardPage.js'
             dashboardPage.click_topMenuItems()
             itemsPage.assertAddedItem()
         })
-        it.skip("3.Edit existing item", () => {
+        it("3.Edit existing item", () => {
             const defaultPage = new (DefaultPage);
             defaultPage.defaultLogIn()
             
@@ -54,7 +54,7 @@ import {DashboardPage} from '../pages/dashboardPage.js'
             itemsPage.click_SaveEditItemBtn()
             itemsPage.assertMessageForEditItem()
         })
-        it.skip("4.Add Second Item", () => {
+        it("4.Add Second Item", () => {
             const defaultPage = new (DefaultPage);
             const itemsPage = new (ItemsPage);
             const dashboardPage = new (DashboardPage);
@@ -74,7 +74,7 @@ import {DashboardPage} from '../pages/dashboardPage.js'
             itemsPage.assertAddedItemSuccessMessage()
             itemsPage.assertHeaderItemName()
         })
-        it.skip("5.Search existing item", () => {
+        it("5.Search existing item", () => {
             const defaultPage = new (DefaultPage);
             defaultPage.defaultLogIn()
             const dashboardPage = new (DashboardPage);
@@ -86,7 +86,7 @@ import {DashboardPage} from '../pages/dashboardPage.js'
             itemsPage.click_SearchingBtn()
             itemsPage.assertNoMoreItemsDespiteFoundOne() 
         })
-        it.skip("6.Add Third Item", () => {
+        it("6.Add Third Item", () => {
             const defaultPage = new (DefaultPage);
             const itemsPage = new (ItemsPage);
             const dashboardPage = new (DashboardPage);
@@ -106,7 +106,7 @@ import {DashboardPage} from '../pages/dashboardPage.js'
             itemsPage.assertAddedItemSuccessMessage()
             itemsPage.assertHeaderItemName()
         })
-        it.skip("7.Search third item", () => {
+        it("7.Search third item", () => {
             const defaultPage = new (DefaultPage);
             defaultPage.defaultLogIn()
             const dashboardPage = new (DashboardPage);
@@ -118,7 +118,7 @@ import {DashboardPage} from '../pages/dashboardPage.js'
             itemsPage.click_SearchingBtn()
             itemsPage.assertItemsFoundThird() 
         })
-        it.skip("8.Delete existing items", () => {
+        it("8.Delete existing items", () => {
             const defaultPage = new (DefaultPage);
             defaultPage.defaultLogIn()
             const dashboardPage = new (DashboardPage);
@@ -130,7 +130,7 @@ import {DashboardPage} from '../pages/dashboardPage.js'
             itemsPage.assertNotFoundItemsMessage()
             itemsPage.assertDeletedItemsMessage()
         })
-        it.skip("9.Add and Delete one Item", () => {
+        it("9.Add and Delete one Item", () => {
             const defaultPage = new (DefaultPage);
             const dashboardPage = new (DashboardPage);
             const itemsPage = new (ItemsPage);
